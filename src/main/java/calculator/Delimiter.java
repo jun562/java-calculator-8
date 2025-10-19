@@ -4,14 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Delimiter {
-    private final List<String> delimiters = new ArrayList<String>(List.of(",", ":"));
+    private final List<String> delimiters = new ArrayList<>(List.of(",", ":"));
 
     public Delimiter() {
     }
 
-    public void extractCustomDelimiter(String input) {
+    public String extractCustomDelimiter(String input) {
+        if (hasCustomerDelimiter(input)) {
+            addCustomDelimiter(input);
+            return processInput(input);
+        }
+        return input;
+    }
+
+    private boolean hasCustomerDelimiter(String input) {
         if (!(input.startsWith("//")) || !(input.contains("\\n"))) {
-            return;
+            return false;
         }
 
         int endIndex = input.indexOf("\\n");
@@ -24,7 +32,15 @@ public class Delimiter {
             throw new IllegalArgumentException("커스텀 구분자는 문자만 지정해야 합니다.");
         }
 
+        return true;
+    }
+
+    private void addCustomDelimiter(String input) {
         delimiters.add(input.substring(2, 3));
+    }
+
+    private String processInput(String input) {
+        return input.substring(5);
     }
 
     /**

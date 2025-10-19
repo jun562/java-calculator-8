@@ -10,16 +10,18 @@ public class Delimiter {
     }
 
     public String extractCustomDelimiter(String input) {
-        if (hasCustomerDelimiter(input)) {
-            addCustomDelimiter(input);
-            return processInput(input);
+        int endIndex = findCustomDelimiterEndIndex(input);
+
+        if (endIndex != -1) {
+            addCustomDelimiter(input, endIndex);
+            return processInput(input, endIndex);
         }
         return input;
     }
 
-    private boolean hasCustomerDelimiter(String input) {
+    private int findCustomDelimiterEndIndex(String input) {
         if (!(input.startsWith("//")) || !(input.contains("\\n"))) {
-            return false;
+            return -1;
         }
 
         int endIndex = input.indexOf("\\n");
@@ -32,15 +34,15 @@ public class Delimiter {
             throw new IllegalArgumentException("커스텀 구분자는 문자만 지정해야 합니다.");
         }
 
-        return true;
+        return endIndex;
     }
 
-    private void addCustomDelimiter(String input) {
-        delimiters.add(input.substring(2, 3));
+    private void addCustomDelimiter(String input, int endIndex) {
+        delimiters.add(input.substring(2, endIndex));
     }
 
-    private String processInput(String input) {
-        return input.substring(5);
+    private String processInput(String input, int endIndex) {
+        return input.substring(endIndex + 2);
     }
 
     /**

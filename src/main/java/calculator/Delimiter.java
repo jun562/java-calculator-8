@@ -3,12 +3,19 @@ package calculator;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 구분자 모음 관리와 커스텀 구분자 여부에 따라 입력된 값을 가공하는 클래스
+ */
 public class Delimiter {
+    // 기본 구분자
     private final List<String> delimiters = new ArrayList<>(List.of(",", ":"));
 
     public Delimiter() {
     }
 
+    /**
+     * Delimiter의 기능들을 호출하여, 구분자 처리 및 문자열 반환
+     */
     public String extractCustomDelimiter(String input) {
         int endIndex = findCustomDelimiterEndIndex(input);
 
@@ -19,6 +26,9 @@ public class Delimiter {
         return input;
     }
 
+    /**
+     * 커스텀 구분자 선언 부(문자열)가 존재하면, 해당 커스텀 구분자 직후 인덱스를 반환
+     */
     private int findCustomDelimiterEndIndex(String input) {
         if (!(input.startsWith("//")) || !(input.contains("\\n"))) {
             return -1;
@@ -37,10 +47,16 @@ public class Delimiter {
         return endIndex;
     }
 
+    /**
+     * 커스텀 구분자를 구분자 모음(리스트)에 추가
+     */
     private void addCustomDelimiter(String input, int endIndex) {
         delimiters.add(input.substring(2, endIndex));
     }
 
+    /**
+     * 커스텀 구분자 선언부 제외 입력값 반환
+     */
     private String processInput(String input, int endIndex) {
         return input.substring(endIndex + 2);
     }

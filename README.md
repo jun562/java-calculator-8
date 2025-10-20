@@ -31,22 +31,22 @@
 
 ## 기능(모듈) 명세
 
-| Class     | Method                      | Input         | Output        | Description                                                 |
-|-----------|-----------------------------|---------------|---------------|-------------------------------------------------------------|
-| Input     | receiveInput                |               | String        | 사용자로부터 입력 값을 받는다.                                           |
-| Delimiter | extractCustomDelimiter      | String        | String        | 아래 4개의 메소드를 호출하여, 구분자 처리를 수행한 후, 문자열을 반환한다.                 |
-|           | findCustomDelimiterEndIndex | String        | int           | 커스텀 구분자 선언 문자열(”//{문자}\n)이 존재한다면, 해당 선언 문자열의 마지막 인덱스를 반환한다. |
-|           | addCustomDelimiter          | String, int   |               | 구분자 모음에 커스텀 문자를 추가한다.                                       |
-|           | processInput                | String, int   | String        | 커스텀 구분자 선언 문자열을 제외한 나머지 문자열을 반환한다.                          |
-|           | getDelimiters               |               | String        | 구분자 모음을 반환한다.                                               |
-| Parser    | parse                       | String        | String []     | 구분자 모음을 통해 문자열을 문자열 배열로 반환한다.                               |
-|           | buildRegex                  | List<String>  | String        | 구분자 모음을 하나의 정규 표현식으로 변환하여 반환한다.                             |
-|           | trimParts                   | String []     | String []     | 문자열 배열의 각 요소들의 공백을 제거한 후 반환한다.                              |
-| Validator | validate                    |               |               | 각 문자열 배열의 요소의 유효성 검사를 시행하고, 예외를 발생시킨다.                      |
-|           | isValid                     | String        | boolean       | 해당 문자가 1~9사이의 숫자인지 검사한다.                                    |
-| Converter | convertParts                | String []     | List<Integer> | 문자열 배열의 요소들을 숫자로 변환하여 정수형 배열을 반환한다.                         |
-| Adder     | addParts                    | List<Integer> | int           | 정수형 배열의 각 요소들을 더하여 반환한다.                                    |
-| Output    | printResult                 | int           |               | 더한 결과 값을 출력한다.                                              |
+| Class     | Method                      | Input           | Output          | Description                                                 |
+|-----------|-----------------------------|-----------------|-----------------|-------------------------------------------------------------|
+| Input     | receiveInput                |                 | String          | 사용자로부터 입력 값을 받는다.                                           |
+| Delimiter | extractCustomDelimiter      | String          | String          | 아래 4개의 메소드를 호출하여, 구분자 처리를 수행한 후, 문자열을 반환한다.                 |
+|           | findCustomDelimiterEndIndex | String          | int             | 커스텀 구분자 선언 문자열(”//{문자}\n)이 존재한다면, 해당 선언 문자열의 마지막 인덱스를 반환한다. |
+|           | addCustomDelimiter          | String, int     |                 | 구분자 모음에 커스텀 문자를 추가한다.                                       |
+|           | processInput                | String, int     | String          | 커스텀 구분자 선언 문자열을 제외한 나머지 문자열을 반환한다.                          |
+|           | getDelimiters               |                 | String          | 구분자 모음을 반환한다.                                               |
+| Parser    | parse                       | String          | String []       | 구분자 모음을 통해 문자열을 문자열 배열로 반환한다.                               |
+|           | buildRegex                  | List\<String\>  | String          | 구분자 모음을 하나의 정규 표현식으로 변환하여 반환한다.                             |
+|           | trimParts                   | String []       | String []       | 문자열 배열의 각 요소들의 공백을 제거한 후 반환한다.                              |
+| Validator | validate                    |                 |                 | 각 문자열 배열의 요소의 유효성 검사를 시행하고, 예외를 발생시킨다.                      |
+|           | isValid                     | String          | boolean         | 해당 문자가 1~9사이의 숫자인지 검사한다.                                    |
+| Converter | convertParts                | String []       | List\<Integer\> | 문자열 배열의 요소들을 숫자로 변환하여 정수형 배열을 반환한다.                         |
+| Adder     | addParts                    | List\<Integer\> | int             | 정수형 배열의 각 요소들을 더하여 반환한다.                                    |
+| Output    | printResult                 | int             |                 | 더한 결과 값을 출력한다.                                              |
 
 ## 커밋 컨벤션
 
